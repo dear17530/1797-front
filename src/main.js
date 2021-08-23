@@ -15,6 +15,7 @@ import ImgInputer from 'vue-img-inputer'
 import 'vue-img-inputer/dist/index.css'
 import mixin from './mixin.js'
 import '@egjs/vue-flicking/dist/flicking.css'
+import '@egjs/vue-flicking/dist/flicking-inline.css'
 
 import vueFilePond from 'vue-filepond'
 import 'filepond/dist/filepond.min.css'
