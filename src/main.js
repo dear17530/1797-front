@@ -26,6 +26,7 @@ import { VueMasonryPlugin } from 'vue-masonry'
 import VueApexCharts from 'vue-apexcharts'
 import Textra from 'vue-textra'
 import Flicking from '@egjs/vue-flicking'
+import '@egjs/flicking-plugins/dist/arrow.css'
 
 import VueGtag from 'vue-gtag'
 Vue.use(VueGtag, {

@@ -6,7 +6,7 @@
         v-btn(rounded text v-bind='attrs' v-on='on')
           v-icon(left fab color='red lighten-1' middle) mdi-plus-circle
           span 新增商品
-      v-card(color='#ebedee').pa-5(:title="form._id.length > 0 ? '編輯商品' : '新增商品'")
+      v-card.pa-5(:title="form._id.length > 0 ? '編輯商品' : '新增商品'" color='#ebedee')
         v-card-title
           span.text-h5.font-weight-bold {{ formTitle }}
         v-card-text
