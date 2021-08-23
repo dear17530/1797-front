@@ -215,11 +215,11 @@ export default {
     async submit () {
       try {
         if (this.form.gender === '男') {
-          this.form.avatar = ['1628009310056.png']
-          this.form.imagefiles = ['1628009310056.png']
+          this.form.avatar = ['genderBoy.png']
+          this.form.imagefiles = ['genderBoy.png']
         } else {
-          this.form.avatar = ['1627978588567.png']
-          this.form.imagefiles = ['1627978588567.png']
+          this.form.avatar = ['genderGirl.png']
+          this.form.imagefiles = ['genderGirl.png']
         }
         await this.axios.post('/users', this.form)
         this.$swal({
