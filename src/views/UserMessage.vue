@@ -1,7 +1,7 @@
 <template lang="pug">
 v-container#userMessage
   v-row#friends.ma-0.mb-2
-    Flicking
+    Flicking(:options="{ circular: false, align: 'prev' }")
       div(v-for='(friend, i) in friends' :key='friend._id' @click='showMessage(friend._id)').friend.mx-2.d-flex.justify-center
         div.d-flex.justify-center.align-center.px-3
           v-avatar(size="60")
@@ -218,6 +218,9 @@ export default {
       },
       deep: true
     }
+  },
+  destroyed () {
+    clearInterval(this.timer)
   }
 }
 </script>
