@@ -4,7 +4,7 @@
     v-card.radius
       v-img(:src='followPost.activeImage[0]' aspect-ratio='1.6')
         v-expand-transition
-          .d-flex.transition-fast-in-fast-out.white.darken-2.v-card--reveal.black--text(v-if='hover' style='height: 100%;').pa-5 {{ followPost.description }}
+          .descriptionBg.d-flex.transition-fast-in-fast-out.white.darken-2.v-card--reveal.black--text(v-if='hover' style='height: 100%; white-space: pre-wrap;').pa-5 {{ followPost.description }}
       v-card-text.pt-5
         v-row
           v-col(cols='12').d-flex.align-end.pb-1
@@ -77,5 +77,9 @@ export default {
 
 #followCard .radius {
   border-radius: 10px !important;
+}
+
+#followCard .descriptionBg {
+  background: #f7e7ef !important;
 }
 </style>

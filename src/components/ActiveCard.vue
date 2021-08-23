@@ -4,7 +4,7 @@
     v-card.radius.ma-0
       v-img(:src='active.activeImage[0]' aspect-ratio='1.6')
         v-expand-transition
-          .descriptionBg.d-flex.transition-fast-in-fast-out.darken-2.v-card--reveal.black--text(v-if='hover' style='height: 100%;').pa-5 {{ active.description }}
+          .descriptionBg.d-flex.transition-fast-in-fast-out.darken-2.v-card--reveal.black--text(v-if='hover' style='height: 100%; white-space: pre-wrap;').pa-5 {{ active.description }}
       v-card-text
         v-row
           v-col(cols='12').d-flex.align-end.pb-1
@@ -86,4 +86,7 @@ export default {
   border-radius: 10px !important;
 }
 
+.descriptionBg {
+  background: #ebedee !important;
+}
 </style>
