@@ -1,0 +1,45 @@
+#userMessage {
+  height: 100%;
+
+  #friends {
+    width: 100%;
+  }
+  
+  .friend {
+    background: #fff3f2;
+    border-radius: 10px;
+  }
+  
+  .friend:hover {
+    background: #fce5e3;
+    border-radius: 10px;
+  }
+  
+  #message {
+    width: 100%;
+    height: calc(80vh - 116px);
+    border-radius: 10px;
+    background: #ebedee;
+    position: relative;
+  }
+  
+  #allDialogBox {
+    overflow-y: scroll;
+    height: 90%;
+  }
+  
+  .dialogBox {
+    background: white;
+    padding: 10px;
+    border-radius: 50px;
+  }
+  
+  #txt {
+    border-radius: 10px;
+    background: #ebedee !important;
+  }
+  
+  .v-input__control {
+    background-color:white !important;
+  }
+}

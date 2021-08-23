@@ -1,0 +1,10 @@
+.v-text-field__slot input{
+  height: 12px !important;
+  text-align: center;
+}
+
+.v-text-field .v-input__control .v-input__slot {
+  min-height: 0 !important;
+  padding: 10px 2px !important;
+  margin-bottom: 2px !important;
+}
