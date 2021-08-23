@@ -10,8 +10,10 @@
   "dependencies": {
     "@egjs/flicking-plugins": "^4.2.0",
     "@egjs/vue-flicking": "^4.2.2",
+    "apexcharts": "^3.27.3",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "filepond": "^4.29.0",
     "filepond-plugin-file-validate-type": "^1.2.6",
     "filepond-plugin-image-preview": "^4.6.7",
     "gsap": "^3.7.1",
