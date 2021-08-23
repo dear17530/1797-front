@@ -89,7 +89,7 @@ export default {
   border-radius: 10px !important;
 }
 
-.descriptionBg {
+#postCard .descriptionBg {
   background: #ebedee !important;
 }
 </style>
