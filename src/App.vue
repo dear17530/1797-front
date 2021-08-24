@@ -60,70 +60,72 @@ v-app#app
         v-btn(block color='white' dark @click="logout")
           span.black--text 登出
   v-dialog(v-model='dialog' max-width='600px')
-    v-card(color='#ebedee').pa-5
-      v-card-title
-        span.text-h5.font-weight-bold 註冊會員
-      v-card-text
-        v-row
-          v-col(cols='12').pb-0
-            span 帳號
-          v-col(cols='12').pt-1.pb-0
-            v-text-field(background-color='white' solo dense v-model='form.account' :rules='accountRules' required)
-        v-row
-          v-col(cols='12').pb-0.pt-0
-            span 密碼
-          v-col(cols='12').pt-1.pb-0
-            v-text-field(background-color='white' solo dense v-model='form.password' :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules='passwordRules' required :type="show1 ? 'text' : 'password'" @click:append='show1 = !show1' autocomplete="off")
-        v-row
-          v-col(cols='12').pb-0.pt-0
-            span 信箱
-          v-col(cols='12').pt-1.pb-0
-            v-text-field(background-color='white' solo dense v-model='form.email' :rules='emailRules' required)
-        v-row
-          v-col(cols='6').pb-0.pt-0
-            span 姓名
-          v-col(cols='6').pb-0.pt-0
-            span 暱稱
-        v-row
-          v-col(cols='6').pt-1.pb-0
-            v-text-field(background-color='white' solo dense v-model='form.name' :rules='nameRules' required)
-          v-col(cols='6').pt-1.pb-0
-            v-text-field(background-color='white' solo dense v-model='form.userId' :rules='nameIdRules' required)
-        v-row
-          v-col(cols='6').pb-0.pt-0
-            span 性別
-          v-col(cols='6').pb-0.pt-0
-            span 生日
-        v-row
-          v-col(cols='6').pt-1.pb-0
-            v-select(:items='items' background-color='white' solo dense :rules='genderRules' v-model='form.gender')
-          v-col(cols='6').pt-1.pb-0
-            v-menu(ref='menu' v-model='menu' :close-on-content-click='false' transition='scale-transition' offset-y min-width='auto')
-              template(v-slot:activator='{ on, attrs }')
-                v-text-field(v-model='form.birthday' background-color='white' solo dense readonly v-bind='attrs' v-on='on')
-              v-date-picker(v-model='form.birthday' :max='(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)' min='1950-01-01' @change='save')
-      v-card-actions
-        v-spacer
-        v-btn.mr-2.mb-1(plain @click='cancel') 晚點再註冊
-        v-btn.mr-2.mb-1.px-8(color='#f7e7ef' @click='submit') 送出
+    v-form
+      v-card(color='#ebedee').pa-5
+        v-card-title
+          span.text-h5.font-weight-bold 註冊會員
+        v-card-text
+          v-row
+            v-col(cols='12').pb-0
+              span 帳號
+            v-col(cols='12').pt-1.pb-0
+              v-text-field(background-color='white' solo dense v-model='form.account' :rules='accountRules' required)
+          v-row
+            v-col(cols='12').pb-0.pt-0
+              span 密碼
+            v-col(cols='12').pt-1.pb-0
+              v-text-field(background-color='white' solo dense v-model='form.password' :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules='passwordRules' required :type="show1 ? 'text' : 'password'" @click:append='show1 = !show1' autocomplete="off")
+          v-row
+            v-col(cols='12').pb-0.pt-0
+              span 信箱
+            v-col(cols='12').pt-1.pb-0
+              v-text-field(background-color='white' solo dense v-model='form.email' :rules='emailRules' required)
+          v-row
+            v-col(cols='6').pb-0.pt-0
+              span 姓名
+            v-col(cols='6').pb-0.pt-0
+              span 暱稱
+          v-row
+            v-col(cols='6').pt-1.pb-0
+              v-text-field(background-color='white' solo dense v-model='form.name' :rules='nameRules' required)
+            v-col(cols='6').pt-1.pb-0
+              v-text-field(background-color='white' solo dense v-model='form.userId' :rules='nameIdRules' required)
+          v-row
+            v-col(cols='6').pb-0.pt-0
+              span 性別
+            v-col(cols='6').pb-0.pt-0
+              span 生日
+          v-row
+            v-col(cols='6').pt-1.pb-0
+              v-select(:items='items' background-color='white' solo dense :rules='genderRules' v-model='form.gender')
+            v-col(cols='6').pt-1.pb-0
+              v-menu(ref='menu' v-model='menu' :close-on-content-click='false' transition='scale-transition' offset-y min-width='auto')
+                template(v-slot:activator='{ on, attrs }')
+                  v-text-field(v-model='form.birthday' background-color='white' solo dense readonly v-bind='attrs' v-on='on')
+                v-date-picker(v-model='form.birthday' :max='(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)' min='1950-01-01' @change='save')
+        v-card-actions
+          v-spacer
+          v-btn.mr-2.mb-1(plain @click='cancel') 晚點再註冊
+          v-btn.mr-2.mb-1.px-8(color='#f7e7ef' @click='submit') 送出
   v-dialog(v-model='logindialog' max-width='400px')
-    v-card(color='#ebedee').pa-5
-      v-card-title
-        span.text-h5.font-weight-bold 登入會員
-      v-card-text
-        v-row
-          v-col(cols='12').pb-0
-            span 帳號
-          v-col(cols='12').pt-1.pb-0
-            v-text-field(background-color='white' solo dense v-model='loginform.account' :rules='accountRules' required)
-          v-col(cols='12').pb-0.pt-0
-            span 密碼
-          v-col(cols='12').pt-1.pb-0
-            v-text-field(background-color='white' solo dense v-model='loginform.password' :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules='passwordRules' required :type="show1 ? 'text' : 'password'" @click:append='show1 = !show1' autocomplete="off")
-      v-card-actions
-        v-spacer
-        v-btn.mr-2.mb-1(plain @click='cancel') 晚點再登入
-        v-btn.mr-2.mb-1.px-8(color='#f7e7ef' @click='loginsubmit') 送出
+    v-form
+      v-card(color='#ebedee').pa-5
+        v-card-title
+          span.text-h5.font-weight-bold 登入會員
+        v-card-text
+          v-row
+            v-col(cols='12').pb-0
+              span 帳號
+            v-col(cols='12').pt-1.pb-0
+              v-text-field(background-color='white' solo dense v-model='loginform.account' :rules='accountRules' required)
+            v-col(cols='12').pb-0.pt-0
+              span 密碼
+            v-col(cols='12').pt-1.pb-0
+              v-text-field(background-color='white' solo dense v-model='loginform.password' :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules='passwordRules' required :type="show1 ? 'text' : 'password'" @click:append='show1 = !show1' autocomplete="off")
+        v-card-actions
+          v-spacer
+          v-btn.mr-2.mb-1(plain @click='cancel') 晚點再登入
+          v-btn.mr-2.mb-1.px-8(color='#f7e7ef' @click='loginsubmit') 送出
   v-main.mt-4
     router-view
   Footer
