@@ -2,7 +2,7 @@
 v-container#userMessage
   v-row#friends.ma-0.mb-2
     Flicking(:options="{ circular: false, align: 'prev' }")
-      div(v-for='(friend, i) in friends' :key='friend._id' @click='showMessage(friend._id)').friend.mx-2.d-flex.justify-center
+      div(v-for='(friend, i) in friends' :key='i' @click='showMessage(friend._id)').friend.mx-2.d-flex.justify-center
         div.d-flex.justify-center.align-center.px-3
           v-avatar(size="60")
             img(:src='friend.avatar[0]')
@@ -27,7 +27,7 @@ v-container#userMessage
           v-text-field(ref="form" v-model='form.message' outline rounded @keydown.enter='submit' hide-details)
             v-icon(slot='append' color='grey' @click='submit') mdi-send-circle-outline
 </template>
-
+<script src="https://unpkg.com/@egjs/flicking/dist/flicking.pkgd.min.js" crossorigin="anonymous"></script>
 <script>
 import '@/scss/userMessage.scss'
 
