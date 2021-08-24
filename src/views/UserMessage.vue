@@ -13,14 +13,32 @@ v-container#userMessage
   v-row#message.ma-0.mb-2
     v-col#allDialogBox(ref='scroll' cols='12' v-show='form.receiver')
       v-row.ma-0(v-for='message in messages' :key='message.date')
-        v-col(v-if='message.sender._id === user._id' cols='12').text-right
-          span.dialogBox.mr-2 {{ message.message }}
+        v-col(v-if='message.welcomeMessage === true && message.sender._id !== user._id').text-left.col-12
           v-avatar(size="25").mr-3
             img(:src='message.sender.avatar[0]')
-        v-col(v-else).text-left
+          span.d-inline-flex.ml-9.ml-md-0.dialogBox.mr-2.pointer 歡迎加入！您可以直接點擊下列問題，若無您要詢問的問題，請手動輸入。
+          br
+          span.d-inline-flex.my-3.ml-9.dialogBox.mr-2.pointer(@click='question(1)') 我該如何發起活動？
+          br
+          span.d-inline-flex.mb-3.ml-9.dialogBox.mr-2.pointer(@click='question(2)') 我該如何編輯活動？
+          br
+          span.d-inline-flex.mb-3.ml-9.dialogBox.mr-2.pointer(@click='question(3)') 我該如何查看有誰參與了我的活動？
+          br
+          span.d-inline-flex.mb-3.ml-9.dialogBox.mr-2.pointer(@click='question(4)') 我該如何參與他人的活動？
+          br
+          span.d-inline-flex.mb-3.ml-9.dialogBox.mr-2.pointer(@click='question(5)') 我該如何私訊主辦人？
+          br
+          span.d-inline-flex.mb-3.ml-9.dialogBox.mr-2.pointer(@click='question(6)') 回饋點數可以怎麼使用？
+          br
+          span.d-inline-flex.ml-9.dialogBox.mr-2.pointer(@click='question(7)') 回饋點數怎麼獲得？
+        v-col(v-else-if='message.welcomeMessage === false && message.sender._id === user._id' cols='12').text-right
+          span.d-inline-flex.dialogBox.mr-2 {{ message.message }}
           v-avatar(size="25").mr-3
             img(:src='message.sender.avatar[0]')
-          span.dialogBox.mr-2 {{ message.message }}
+        v-col(v-else-if='message.welcomeMessage === false && message.sender._id !== user._id' cols='12').text-left
+          v-avatar(size="25").mr-3
+            img(:src='message.sender.avatar[0]')
+          span.d-inline-flex.dialogBox.mr-2 {{ message.message }}
     v-col(cols='12' v-show='form.receiver').mt-auto
       v-row
         v-col(cols='12')#txt
@@ -97,6 +115,79 @@ export default {
         return '雙魚座'
       }
     },
+    async question (item) {
+      if (item === 1) {
+        const data = {
+          message: '我該如何發起活動？',
+          receiver: this.form.receiver
+        }
+        await this.axios.post('/messages', data, {
+          headers: {
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+      } else if (item === 2) {
+        const data = {
+          message: '我該如何編輯活動？',
+          receiver: this.form.receiver
+        }
+        await this.axios.post('/messages', data, {
+          headers: {
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+      } else if (item === 3) {
+        const data = {
+          message: '我該如何查看有誰參與了我的活動？',
+          receiver: this.form.receiver
+        }
+        await this.axios.post('/messages', data, {
+          headers: {
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+      } else if (item === 4) {
+        const data = {
+          message: '我該如何參與他人的活動？',
+          receiver: this.form.receiver
+        }
+        await this.axios.post('/messages', data, {
+          headers: {
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+      } else if (item === 5) {
+        const data = {
+          message: '我該如何私訊主辦人？',
+          receiver: this.form.receiver
+        }
+        await this.axios.post('/messages', data, {
+          headers: {
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+      } else if (item === 6) {
+        const data = {
+          message: '回饋點數可以怎麼使用？',
+          receiver: this.form.receiver
+        }
+        await this.axios.post('/messages', data, {
+          headers: {
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+      } else if (item === 7) {
+        const data = {
+          message: '回饋點數怎麼獲得？',
+          receiver: this.form.receiver
+        }
+        await this.axios.post('/messages', data, {
+          headers: {
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+      }
+    },
     async submit () {
       if (!this.$refs.form.validate()) {
         this.$swal({
@@ -123,6 +214,7 @@ export default {
           authorization: 'Bearer ' + this.$store.state.jwt.token
         }
       })
+      console.log(data.result)
       this.messages = data.result.map(item => {
         if (item.receiver.imagefiles.length === 0) {
           item.receiver.avatar[0] = `${process.env.VUE_APP_API}/files/${item.receiver.avatar[0]}`
