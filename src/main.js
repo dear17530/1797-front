@@ -14,6 +14,7 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 import ImgInputer from 'vue-img-inputer'
 import 'vue-img-inputer/dist/index.css'
 import mixin from './mixin.js'
+import Flicking from '@egjs/vue-flicking'
 import '@egjs/vue-flicking/dist/flicking.css'
 import '@egjs/vue-flicking/dist/flicking-inline.css'
 
@@ -26,8 +27,6 @@ import VuePaycard from 'vue-paycard'
 import { VueMasonryPlugin } from 'vue-masonry'
 import VueApexCharts from 'vue-apexcharts'
 import Textra from 'vue-textra'
-import Flicking from '@egjs/vue-flicking'
-import '@egjs/flicking-plugins/dist/arrow.css'
 
 import VueGtag from 'vue-gtag'
 Vue.use(VueGtag, {
