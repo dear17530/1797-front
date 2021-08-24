@@ -10,7 +10,7 @@ v-app#app
       span 購物車
     router-link(to='/').mx-1
       v-img#logo.mx-2(src='~@/assets/logo.png' max-height='70' max-width='70')
-    v-btn(v-if="user.islogin && !user.isAdmin" rounded text to='/usermessage')
+    v-btn(v-if="user.islogin" rounded text to='/usermessage')
       span 私人訊息
     v-btn(v-if="user.islogin && user.isAdmin" rounded text to='/admin/adminorders').mx-2
       span 管理中心
@@ -41,7 +41,7 @@ v-app#app
       v-col.col-12(v-if="user.islogin && !user.isAdmin")
         v-btn(block color='white' dark to='/cart')
           span.black--text 購物車
-      v-col.col-12(v-if="user.islogin && !user.isAdmin")
+      v-col.col-12(v-if="user.islogin")
         v-btn(block color='white' dark to='/usermessage')
           span.black--text 私人訊息
       v-col.col-12(v-if="user.islogin && user.isAdmin")
