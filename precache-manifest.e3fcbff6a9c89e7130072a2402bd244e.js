@@ -224,7 +224,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/unionpay.7d585d0b.png"
   },
   {
-    "revision": "564ddf9eccd3d370dee66fd17301166f",
+    "revision": "5befe2cbb8e3c0bedc39d8e5c86576bc",
     "url": "index.html"
   },
   {
