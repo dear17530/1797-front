@@ -10,8 +10,8 @@
     plain
     dense
   )
-    v-icon(slot='prepend' color='#ebedee' @click='decrease') mdi-minus-box
-    v-icon(slot='append-outer' color='#f7e7ef' @click='increase') mdi-plus-box
+    v-icon(slot='prepend' color='#C0C7CA' @click='decrease') mdi-minus-box
+    v-icon(slot='append-outer' color='#ffcec9' @click='increase') mdi-plus-box
 </template>
 
 <script>
