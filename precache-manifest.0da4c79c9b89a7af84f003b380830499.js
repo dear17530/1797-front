@@ -36,7 +36,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "css/admin.4c048199.css"
   },
   {
-    "revision": "4aed713b3dc30bd2e719",
+    "revision": "847b4de0b93b1133f2ef",
     "url": "css/app.7b2310af.css"
   },
   {
@@ -228,7 +228,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/unionpay.7d585d0b.png"
   },
   {
-    "revision": "b0fa4e484f39b45eab7a98def652738b",
+    "revision": "a553d4a58e1d855af2dc9946a328db71",
     "url": "index.html"
   },
   {
@@ -264,8 +264,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/admin.eedd9870.js"
   },
   {
-    "revision": "4aed713b3dc30bd2e719",
-    "url": "js/app.4cd4e0e5.js"
+    "revision": "847b4de0b93b1133f2ef",
+    "url": "js/app.e2db969d.js"
   },
   {
     "revision": "fc7d5db2146a04bfe192",
