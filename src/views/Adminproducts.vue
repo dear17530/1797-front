@@ -78,7 +78,7 @@
     template(v-slot:item.sendActions='{ item }' width='12')
         v-img(src='~@/assets/giftbox.png' v-if='item.order_quantity >= item.count' @click='sendCoupon(item)' max-height='20' max-width='20').pointer
     template(v-slot:item.image='{ item }')
-      v-img(:src='item.image[0]' height="100" aspect-ratio="1.7")
+      v-img(:src='item.image[0]' height="50" aspect-ratio="1.7")
     template(v-slot:item.sell='{ item }')
       span(v-if='item.sell === true') 上架
       span(v-else) 下架
@@ -294,6 +294,11 @@ export default {
             headers: {
               authorization: 'Bearer ' + this.$store.state.jwt.token
             }
+          })
+          this.$swal({
+            icon: 'success',
+            title: '成功',
+            text: '修改成功'
           })
         }
         const { data } = await this.axios.get('/products/all', {
