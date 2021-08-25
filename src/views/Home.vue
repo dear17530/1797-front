@@ -59,7 +59,7 @@ v-container#home.pa-0(fluid)
             v-progress-linear(color='pink lighten-5' v-model='product.progress' rounded height='25' width='100%')
               strong {{ product.progress }}
           p.text-button.text-md-caption.text-right.grey--text.text--darken-2 集資達 {{ product.count }} 件 每件回饋 {{ product.coupon }} 點
-  #active.d-flex.justify-center.align-center.mb-15
+  #active.d-flex.justify-center.align-center.my-15
     div
       v-row.justify-center.align-center.mt-10
         v-col.col-12
@@ -83,7 +83,7 @@ v-container#home.pa-0(fluid)
                   v-avatar(size="25").mr-3
                     img(:src='message.sender.avatar[0]')
                   span.text-button.dialogBox.mr-2 {{ message.message }}
-            v-col#txt(cols='12').mt-auto.mb-10.mb-lg-7
+            v-col#txt(cols='12').mt-auto.mb-10
               v-row.ma-0.pa-0
                 v-col(cols='12').ma-0.pa-0
                   v-text-field(outline rounded hide-details)
@@ -135,7 +135,7 @@ export default {
           date: '2021-08-20T02:56:57.303Z'
         },
         {
-          message: '約在台北車站8號出口如何?',
+          message: '台北車站8號出口如何?',
           sender: {
             avatar: [],
             userId: '小雪'
@@ -175,9 +175,9 @@ export default {
     gsap.from('#product', {
       scrollTrigger: {
         trigger: '#product',
-        start: 'top bottom',
-        scrub: 1,
-        markers: false
+        start: 'top 50%',
+        end: 'bottom 0%',
+        markers: true
       },
       y: 200,
       opacity: 0,
@@ -187,9 +187,9 @@ export default {
     gsap.from('#active', {
       scrollTrigger: {
         trigger: '#active',
-        start: 'top bottom',
-        scrub: 1,
-        markers: false
+        start: 'top 0%',
+        end: 'bottom 0%',
+        markers: true
       },
       y: 200,
       opacity: 0,
