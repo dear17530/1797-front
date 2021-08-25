@@ -177,7 +177,7 @@ export default {
         trigger: '#product',
         start: 'top 50%',
         end: 'bottom 0%',
-        markers: true
+        markers: false
       },
       y: 200,
       opacity: 0,
@@ -189,7 +189,7 @@ export default {
         trigger: '#active',
         start: 'top 0%',
         end: 'bottom 0%',
-        markers: true
+        markers: false
       },
       y: 200,
       opacity: 0,
