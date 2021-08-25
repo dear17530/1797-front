@@ -2,7 +2,7 @@
 #adminanalysis
   v-row.mt-0
     v-col(cols='5')
-      span.text-h5.font-weight-bold 目標業績
+      span.text-h5.font-weight-bold 總業績查詢
     v-spacer
     v-col(cols='2')
       v-select(:items='yearItems' label='年份' solo v-model='year' dense hide-details='false')
