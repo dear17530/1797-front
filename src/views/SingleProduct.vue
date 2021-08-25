@@ -19,7 +19,7 @@ v-container#singleProduct(fluid style="height: 100%;")
             v-col.col-12.pb-0
               span.text-h5 ${{ price }}
             v-col.col-12
-              span.text-body-1 {{ description }}
+              span.text-body-1(style='height: 100%; white-space: pre-wrap;') {{ description }}
             v-col.col-12.text-right.pb-0
               v-progress-linear(color='pink lighten-5' v-model='progress' rounded height='25' width='100%')
                 strong {{ progress }}
@@ -95,7 +95,7 @@ export default {
         this.$swal({
           icon: 'error',
           title: '錯誤',
-          text: '請選擇種類'
+          text: '請選擇商品品項'
         })
         return
       }
@@ -144,7 +144,6 @@ export default {
       this.coupon = data.result.coupon
       this.options = data.result.options
       this.order_quantity = data.result.order_quantity
-      document.title = `${this.name} | 購物網`
     } catch (error) {
       this.$router.push('/')
     }
