@@ -37,15 +37,18 @@
   v-row
     v-col(cols='12')
       v-data-table(:headers='headers' :items='products').ma-0
-      v-dialog(v-model='dialog' color='white' persistent max-width='200px')
-        v-card-text
-          v-text-field(v-model='setTargetSales')
-        v-card-actions
-          v-spacer
-          v-btn(color='blue darken-1' text @click='editTargetCancel').
-            取消
-          v-btn(color='blue darken-1' text @click='editTargetubmit').
-            送出
+      v-dialog(v-model='dialog' color='white' persistent max-width='400px')
+        v-card(color='#ebedee').pa-5
+          v-card-title
+            span.text-h5.font-weight-bold 設定目標業績
+          v-card-text.pt-1.pb-0
+            v-text-field(background-color='white' solo dense v-model='setTargetSales')
+          v-card-actions
+            v-spacer
+            v-btn.mr-2.mb-1(plain @click='editTargetCancel').
+              取消
+            v-btn.mr-2.mb-1(color='#f7e7ef' @click='editTargetubmit').
+              送出
 </template>
 <script>
 export default {
