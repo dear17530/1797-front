@@ -214,7 +214,6 @@ export default {
           authorization: 'Bearer ' + this.$store.state.jwt.token
         }
       })
-      console.log(data.result)
       this.messages = data.result.map(item => {
         if (item.receiver.imagefiles.length === 0) {
           item.receiver.avatar[0] = `${process.env.VUE_APP_API}/files/${item.receiver.avatar[0]}`
