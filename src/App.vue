@@ -186,7 +186,13 @@ export default {
       menu: false,
       dialog: false,
       logindialog: false,
-      items: ['男', '女']
+      items: ['男', '女'],
+      messages: []
+    }
+  },
+  computed: {
+    getMessageLength () {
+      return this.messages.length
     }
   },
   methods: {
@@ -274,9 +280,39 @@ export default {
           text: '發生錯誤'
         })
       }
+    },
+    async gerAllMessages () {
+      if (this.$store.state.user.account.length <= 0) return
+      const { data } = await this.axios.get('/messages/allMessages/' + this.$store.state.user._id, {
+        headers: {
+          authorization: 'Bearer ' + this.$store.state.jwt.token
+        }
+      })
+      this.messages = data.result.map(item => {
+        if (item.receiver.imagefiles.length === 0) {
+          item.receiver.avatar[0] = `${process.env.VUE_APP_API}/files/${item.receiver.avatar[0]}`
+        } else {
+          item.receiver.avatar[0] = `${process.env.VUE_APP_API}/files/${item.receiver.imagefiles[0]}`
+          item.receiver.imagefiles = []
+        }
+        if (item.sender.imagefiles.length === 0) {
+          item.sender.avatar[0] = `${process.env.VUE_APP_API}/files/${item.sender.avatar[0]}`
+        } else {
+          item.sender.avatar[0] = `${process.env.VUE_APP_API}/files/${item.sender.imagefiles[0]}`
+          item.receiver.imagefiles = []
+        }
+        return item
+      })
+      console.log(this.messages.length)
+    },
+    delayUpdate (ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms))
     }
   },
   async mounted () {
+    if (this.$store.state.user.account.length >= 1) {
+      this.timer = setInterval(this.gerAllMessages, 1000)
+    }
     if (this.$store.state.jwt.token.length === 0) return
     const diff = Date.now() - this.$store.state.jwt.received
     try {
@@ -300,6 +336,42 @@ export default {
     } catch (error) {
       this.$store.commit('logout')
     }
+  },
+  watch: {
+    'user.islogin': {
+      handler: function () {
+        if (!this.user.islogin) {
+          clearInterval(this.timer)
+        }
+      },
+      deep: true
+    },
+    getMessageLength: {
+      handler: async function () {
+        const oldvalue = this.messages.length
+        const delay = 1000
+        await this.delayUpdate(delay)
+        const newvalue = this.getMessageLength
+        if (oldvalue !== newvalue) {
+          console.log(`${oldvalue} ${newvalue} 更新`)
+          Notification.requestPermission(permission => {
+            if (permission === 'granted') {
+              const notification = new Notification('聊天室有新訊息!', {
+                body: '通知'
+              })
+              notification.onclick = (e) => {
+                e.preventDefault()
+                window.open('https://dear17530.github.io/1797-front/#/usermessage')
+              }
+            }
+          })
+        }
+      },
+      deep: true
+    }
+  },
+  destroyed () {
+    clearInterval(this.timer)
   }
 }
 </script>
