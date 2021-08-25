@@ -2,7 +2,7 @@
 #adminanalysis
   v-row.mt-0
     v-col(cols='5')
-      span.text-h5.font-weight-bold 總業績查詢
+      span.text-h5.font-weight-bold 當月業績查詢
     v-spacer
     v-col(cols='2')
       v-select(:items='yearItems' label='年份' solo v-model='year' dense hide-details='false')
@@ -237,7 +237,7 @@ export default {
           this.categorySalesChart[2].category.totalSaleAmount = item.totalSaleAmount
           this.pie[0].all.series[2] = Math.round(item.totalSaleAmount / this.getRevenue * 100)
         } else if (item._id === '美妝保健') {
-          this.categorySalesChart[3].makeup.series = [Math.round(item.totalSaleAmount / this.targetSales[3] * 100)]
+          this.categorySalesChart[3].category.series = [Math.round(item.totalSaleAmount / this.targetSales[3] * 100)]
           this.categorySalesChart[3].category.totalSaleAmount = item.totalSaleAmount
           this.pie[0].all.series[3] = Math.round(item.totalSaleAmount / this.getRevenue * 100)
         } else if (item._id === '3C用品') {
@@ -298,6 +298,23 @@ export default {
   },
   async mounted () {
     try {
+      try {
+        const { data } = await this.axios.get('/orders/getOrdersQuantity', {
+          headers: {
+            authorization: 'Bearer ' + this.$store.state.jwt.token
+          }
+        })
+        this.orders = data.result.filter(item => {
+          return item.year === this.year && item.month === this.month
+        })
+      } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: '錯誤',
+          text: '取得訂單數量失敗'
+        })
+      }
+
       const { data } = await this.axios.get('/orders/getCategorySales', {
         headers: {
           authorization: 'Bearer ' + this.$store.state.jwt.token
