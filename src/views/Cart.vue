@@ -236,8 +236,8 @@ export default {
         })
         this.$swal({
           icon: 'success',
-          title: '成功',
-          text: '請至訂單查詢'
+          title: '交易成功',
+          text: '請至會員中心查詢訂單'
         })
         this.paymentForm = false
         this.cart = []
@@ -259,7 +259,7 @@ export default {
         this.$swal({
           icon: 'error',
           title: '錯誤',
-          text: '扣點數錯誤'
+          text: '點數扣除錯誤'
         })
       }
     },

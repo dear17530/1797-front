@@ -200,8 +200,8 @@ export default {
           })
           this.$swal({
             icon: 'success',
-            title: '成功',
-            text: '加入成功，快點私密主辦人吧!'
+            title: '加入活動成功',
+            text: '請到會員中心查看'
           })
         } catch (error) {
           this.$swal({
@@ -273,8 +273,8 @@ export default {
           })
           this.$swal({
             icon: 'success',
-            title: '成功',
-            text: '揪團成功'
+            title: '揪團成功',
+            text: '請至會員中心查看貼文'
           })
         } catch (error) {
           this.$swal({
