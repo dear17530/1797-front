@@ -1,6 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fa91f5cdd653f02630d4",
+    "revision": "17d8be3fbd3b8aa09b2249d628c48229",
+    "url": "1797.png"
+  },
+  {
+    "revision": "9722c8d07a2f19a47dde",
     "url": "css/SingleProduct.eb791572.css"
   },
   {
@@ -12,15 +16,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "css/UserMessage.a52fdc1d.css"
   },
   {
-    "revision": "d19c58d9151107bf910d",
+    "revision": "f13d4988dfc40a4b34e0",
     "url": "css/UserOrders.d2a75ae8.css"
   },
   {
-    "revision": "61663458913f2854df47",
-    "url": "css/UserOrders~admin.d253099c.css"
+    "revision": "fc1f036ff3fd1c0ca28b",
+    "url": "css/UserOrders~admin.b57e79b8.css"
   },
   {
-    "revision": "f14e4fee3851f5706b4c",
+    "revision": "a5439542062bc8cda359",
     "url": "css/actives.9d21c0d7.css"
   },
   {
@@ -28,15 +32,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "css/actives~admin~products.70a8a29d.css"
   },
   {
-    "revision": "c86c128c06ad0824f630",
+    "revision": "8c495b9bc3bd8b7b1357",
     "url": "css/admin.4c048199.css"
   },
   {
-    "revision": "2bb2f421f4e57240dfbd",
+    "revision": "3936baebbc855459e81e",
     "url": "css/app.7b2310af.css"
   },
   {
-    "revision": "3291c53fa2f1a21d9b61",
+    "revision": "0189133e441a8571cb83",
     "url": "css/cart.204aa948.css"
   },
   {
@@ -224,12 +228,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/unionpay.7d585d0b.png"
   },
   {
-    "revision": "4e5f3473b08a7aa639af149125f3a9b2",
+    "revision": "3050bcbef3d681e1a5f5f321efd5eb84",
     "url": "index.html"
   },
   {
-    "revision": "fa91f5cdd653f02630d4",
-    "url": "js/SingleProduct.35916d9e.js"
+    "revision": "9722c8d07a2f19a47dde",
+    "url": "js/SingleProduct.fc5f76ac.js"
   },
   {
     "revision": "835a945cad10cc15e52f",
@@ -240,32 +244,32 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/UserMessage.d6d42b56.js"
   },
   {
-    "revision": "d19c58d9151107bf910d",
-    "url": "js/UserOrders.a0d37013.js"
+    "revision": "f13d4988dfc40a4b34e0",
+    "url": "js/UserOrders.5783ea52.js"
   },
   {
-    "revision": "61663458913f2854df47",
-    "url": "js/UserOrders~admin.bb886cdb.js"
+    "revision": "fc1f036ff3fd1c0ca28b",
+    "url": "js/UserOrders~admin.8d764b08.js"
   },
   {
-    "revision": "f14e4fee3851f5706b4c",
-    "url": "js/actives.f0e0ec16.js"
+    "revision": "a5439542062bc8cda359",
+    "url": "js/actives.1d000bf6.js"
   },
   {
     "revision": "d537237f0bee7ecda726",
     "url": "js/actives~admin~products.f6af1b2e.js"
   },
   {
-    "revision": "c86c128c06ad0824f630",
-    "url": "js/admin.2c0425ab.js"
+    "revision": "8c495b9bc3bd8b7b1357",
+    "url": "js/admin.4d18aa8d.js"
   },
   {
-    "revision": "2bb2f421f4e57240dfbd",
-    "url": "js/app.222812fb.js"
+    "revision": "3936baebbc855459e81e",
+    "url": "js/app.943728ae.js"
   },
   {
-    "revision": "3291c53fa2f1a21d9b61",
-    "url": "js/cart.e6614724.js"
+    "revision": "0189133e441a8571cb83",
+    "url": "js/cart.db94717d.js"
   },
   {
     "revision": "2692b3a7329b549e8eca",
@@ -276,7 +280,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/products.1bc4c72d.js"
   },
   {
-    "revision": "1ecee0c343b1bc0443f2e6eba14ed6ff",
+    "revision": "d480214d9e085b8a26b34cfb7d760632",
     "url": "manifest.json"
   },
   {
