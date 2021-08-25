@@ -2,7 +2,7 @@
 v-container#userMessage
   v-row#friends.ma-0.mb-2
     Flicking(:options="{ circular: false, align: 'prev' }")
-      div(v-for='(friend, i) in friends' :key='i' @click='showMessage(friend._id)').friend.mx-2.d-flex.justify-center
+      div(v-for='(friend, i) in friends' :key='i' @click='showMessage(friend._id, i)' :style='{background: friend.bg}').friend.mx-2.d-flex.justify-center
         div.d-flex.justify-center.align-center.px-3
           v-avatar(size="60")
             img(:src='friend.avatar[0]')
@@ -66,7 +66,8 @@ export default {
       birthMonth: 0,
       birthDay: 0,
       nowTime: 0,
-      messageLength: 0
+      messageLength: 0,
+      index: 0
     }
   },
   computed: {
@@ -207,7 +208,15 @@ export default {
       })
       this.form.message = ''
     },
-    async showMessage (id) {
+    async showMessage (id, i) {
+      this.index = i
+      for (let j = 0; j < this.friends.length; j++) {
+        if (j === this.index) {
+          this.friends[j].bg = '#ffcec9'
+        } else {
+          this.friends[j].bg = '#fff3f2'
+        }
+      }
       this.form.receiver = id
       const { data } = await this.axios.get('/messages/' + id, {
         headers: {
@@ -277,9 +286,11 @@ export default {
         item.age = this.getAge(new Date(item.birthday).getTime())
         item.birthday = this.getConstellation(new Date(item.birthday).getTime())
         item.introduction = this.getIntroduction(item.introduction)
+        item.bg = '#fff3f2'
         return item
       })
       this.form.receiver = this.friends[0]._id
+      this.friends[0].bg = '#ffcec9'
     } catch (error) {
       this.$swal({
         icon: 'error',
