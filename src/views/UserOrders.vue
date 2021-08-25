@@ -6,9 +6,9 @@
         td(:colspan="headers.length+1").py-4
           OrderCard(:item='item')
       template(v-slot:item.actions='{ item }' width='20')
-        v-btn(rounded small color='success' @click='editstate(item)' v-if=('item.state === "已出貨"'))
-          v-icon(left) mdi-checkbox-marked-circle-outline
-          | 收到包裹
+        v-btn(rounded small color='#d3a19c' @click='editstate(item)' v-if=('item.state === "已出貨"'))
+          v-icon(left color='white') mdi-checkbox-marked-circle-outline
+          span.white--text 收到包裹
 </template>
 <script>
 import '@/scss/userorders.scss'
