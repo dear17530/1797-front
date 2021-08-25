@@ -2,7 +2,7 @@
 v-container#home.pa-0(fluid)
   #banner.pa-10
     v-row.mt-10.mt-lg-15.justify-center.mb-0
-      v-col.col-12.col-sm-10.col-md-6.d-flex.justify-center
+      v-col.col-12.col-sm-10.col-md-6.d-flex.justify-center.title
         v-img(src='~@/assets/title.png')
     v-carousel(hide-delimiters :height='"100%"')
       v-carousel-item
@@ -113,13 +113,11 @@ export default {
         {
           message: 'hi~我是小華',
           sender: {
-            avatar: ['http://localhost:3000/files/1628009310056.png'],
-            imagefiles: ['1628009310056.png'],
+            avatar: [],
             userId: '我小華'
           },
           receiver: {
-            avatar: ['http://localhost:3000/files/1628577102640.png'],
-            imagefiles: [],
+            avatar: [],
             userId: '小雪'
           },
           date: '2021-08-20T02:56:43.928Z'
@@ -127,13 +125,11 @@ export default {
         {
           message: '要約幾點和約在哪裡呢?',
           sender: {
-            avatar: ['http://localhost:3000/files/1628009310056.png'],
-            imagefiles: ['1628009310056.png'],
+            avatar: [],
             userId: '我小華'
           },
           receiver: {
-            avatar: ['http://localhost:3000/files/1628577102640.png'],
-            imagefiles: [],
+            avatar: [],
             userId: '小雪'
           },
           date: '2021-08-20T02:56:57.303Z'
@@ -141,13 +137,11 @@ export default {
         {
           message: '約在台北車站8號出口如何?',
           sender: {
-            avatar: ['http://localhost:3000/files/1628577102640.png'],
-            imagefiles: [],
+            avatar: [],
             userId: '小雪'
           },
           receiver: {
-            avatar: ['http://localhost:3000/files/1628009310056.png'],
-            imagefiles: [],
+            avatar: [],
             userId: '我小華'
           },
           date: '2021-08-20T02:57:42.838Z'
@@ -156,13 +150,11 @@ export default {
           _id: '611f1a2e2cc82a558c6c13bf',
           message: '我最快可以12:30到',
           sender: {
-            avatar: ['http://localhost:3000/files/1628577102640.png'],
-            imagefiles: [],
+            avatar: [],
             userId: '小雪'
           },
           receiver: {
-            avatar: ['http://localhost:3000/files/1628009310056.png'],
-            imagefiles: [],
+            avatar: [],
             userId: '我小華'
           },
           date: '2021-08-20T02:57:50.442Z'
@@ -179,12 +171,30 @@ export default {
     }
   },
   async mounted () {
-    gsap.from('.productBN', {
-      x: -500,
+    gsap.registerPlugin(ScrollTrigger)
+    gsap.from('#product', {
+      scrollTrigger: {
+        trigger: '#product',
+        start: 'top bottom',
+        scrub: 1,
+        markers: true
+      },
+      y: 200,
+      opacity: 0,
       duration: 1
     })
 
-    gsap.registerPlugin(ScrollTrigger)
+    gsap.from('#active', {
+      scrollTrigger: {
+        trigger: '#active',
+        start: 'top bottom',
+        scrub: 1,
+        markers: true
+      },
+      y: 200,
+      opacity: 0,
+      duration: 1
+    })
 
     try {
       const { data } = await this.axios.get('/posts')
@@ -198,6 +208,17 @@ export default {
         }
         return active
       })
+      for (let i = 0; i < this.messages.length; i++) {
+        if (this.messages[i].sender.userId === '我小華') {
+          this.messages[i].sender.avatar = [`${process.env.VUE_APP_API}/files/genderBoy.png`]
+        } else if (this.messages[i].sender.userId === '小雪') {
+          this.messages[i].sender.avatar = [`${process.env.VUE_APP_API}/files/genderGirl.png`]
+        } else if (this.messages[i].receiver.userId === '我小華') {
+          this.messages[i].receiver.avatar = [`${process.env.VUE_APP_API}/files/genderGirl.png`]
+        } else if (this.messages[i].receiver.userId === '小雪') {
+          this.messages[i].receiver.avatar = [`${process.env.VUE_APP_API}/files/genderGirl.png`]
+        }
+      }
     } catch (error) {
       this.$swal({
         icon: 'error',
