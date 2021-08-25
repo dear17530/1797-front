@@ -177,7 +177,7 @@ export default {
         trigger: '#product',
         start: 'top bottom',
         scrub: 1,
-        markers: true
+        markers: false
       },
       y: 200,
       opacity: 0,
@@ -189,7 +189,7 @@ export default {
         trigger: '#active',
         start: 'top bottom',
         scrub: 1,
-        markers: true
+        markers: false
       },
       y: 200,
       opacity: 0,
