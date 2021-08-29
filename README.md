@@ -133,3 +133,304 @@
 
 3. 營運分析
 ![](https://i.imgur.com/JE9baZ6.png)
+
+## API
+### 使用者
+#### 註冊
+- 請求方式 Post
+- 路徑 `/users`
+```json
+{
+  "account": 帳號,
+  "password": 密碼,
+  "email": 信箱,
+  "birthday": 生日,
+  "name"： 姓名,
+  "userId": 暱稱,
+  "gender": 性別
+}
+```
+
+#### 登入
+- 請求方式 Post
+- 路徑 `/users/login`
+- 獲取 token
+```json
+{
+  "account": 帳號,
+  "password": 密碼
+}
+```
+
+#### 登出
+- 請求方式 Delete
+- 路徑 `/users/:id`
+```json
+{
+  "account": 帳號,
+  "password": 密碼
+}
+```
+### 揪活動
+#### 取得貼文
+- 請求方式 Get
+- 路徑 `/posts`
+
+#### 新增貼文
+- 請求方式 post
+- 路徑 `/posts`
+```json
+{
+  "userId": 使用者id,
+  "avatar": 頭貼,
+  "title": 標題,
+  "categories": 分類,
+  "city": 城市,
+  "activeDate": 活動日期,
+  "description": 活動描述,
+  "activeImage": 活動圖片,
+  "member": 參加者
+}
+```
+
+#### 加入好友
+- 請求方式 Post
+- 路徑 `/users/:id`
+```json=
+{
+  "userId": po文者id
+}
+```
+
+#### 跟團
+- 請求方式 patch
+- 路徑 `/users/:id`
+```json=
+{
+  "follow": po文id
+}
+```
+### 聊天室
+#### 取得好友
+- 請求方式 get
+- 路徑 `/users/:id/friend`
+- 驗證 token
+
+#### 取得聊天訊息
+- 請求方式 get
+- 路徑 `/messages/:id`
+- 驗證 token
+
+### 集團購
+#### 取得商品
+- 請求方式 Get
+- 路徑 `/products`
+:::info
+取出上架中 sell: true 的商品
+:::
+
+#### 商品單獨頁
+- 請求方式 Get
+- 路徑 `/products/:id`
+
+#### 加入購物車
+- 請求方式 Post
+- 路徑 `/users/cart`
+```json
+{
+  "product": 商品id,
+  "option": 品項,
+  "amount": 數量
+}
+```
+
+### 購物車
+#### 取得購物車
+- 請求方式 Get
+- 路徑 `/users/cart`
+- 驗證 token 取得 user 內的 cart
+- 也把 user 內的 coupon 回饋點數欄位帶出
+
+#### 刪除購物車商品
+- 請求方式 Patch
+- 路徑 `/users/cart`
+- 需驗證 token
+```json
+{
+  "account": 帳號,
+  "product": 商品id,
+  "amount": 0,
+  "option": 品項
+}
+```
+
+#### 編輯購物車商品
+- 請求方式 Patch
+- 路徑 `/users/cart`
+- 需驗證 token
+```json
+{
+  "account": 帳號,
+  "product": 商品id,
+  "amount": 數量,
+  "option": 品項
+}
+```
+
+#### 送出訂單
+- 請求方式 Post
+- 路徑 `/orders`
+```json
+{
+  "delivery_method": 宅配,
+  "address": 地址,
+  "contact_number": 手機,
+  "payment": 付款狀態,
+  "payment_method": 付款方式,
+  "valueFields": 信用卡資料,
+  "redeem": 使用點數,
+  "sum": 總金額,
+  "state": 訂單狀況
+}
+```
+
+#### 結帳扣除回饋點數
+- 請求方式 Patch
+- 驗證
+- 路徑 `/users`
+```json
+{
+  "_id": 使用者 id,
+  "coupon": 原本點數 - 本訂單折抵點數
+}
+```
+
+### 會員中心
+#### 取得使用者資料
+- 請求方式 Get
+- 路徑 `/users/id`
+
+#### 編輯使用者資料
+- 請求方式 Patch
+- 路徑 `/users/:id`
+```json
+{
+  "name"： 姓名,
+  "userId": 暱稱,
+  "introduction": 自我介紹,
+}
+```
+
+#### 取得使用者活動貼文
+- 請求方式 Get
+- 路徑 `/users/post`
+- 需驗證 token
+
+#### 取得使用者跟隨活動貼文
+- 請求方式 Get
+- 路徑 `/users/follow`
+- 需驗證 token
+#### 訂單查詢
+- 請求方式 Get
+- 路徑 `/orders/getorders`
+- 驗證 token 確認 role: 0
+
+#### 更改訂單狀態
+- 請求方式 Patch
+- 路徑 `/orders/:id`
+
+#### 已完成訂單內商品
+- 請求方式 Patch
+- 路徑 `/products/:id`
+
+#### 取得商品數量
+- 請求方式 Get
+- 路徑 `/products/orderQuantity
+- 驗證 token 確認 role: 1
+
+
+### 後台商品管理
+#### 取得所有商品
+- 請求方式 Get
+- 路徑 `/products/all`
+- 驗證 token 確認 role: 1
+
+#### 新增商品
+- 請求方式 Post
+- 路徑 `/products`
+- 驗證 token 確認 role: 1
+```json
+{
+  "name": 品名,
+  "price": 價格,
+  "category": 分類,
+  "description": 敘述,
+  "image": 商品圖片,
+  "sell": 上下架狀態,
+  "count": 優惠門檻,
+  "coupon": 回饋點數,
+  "options": 品項
+}
+```
+
+#### 修改商品
+- 請求方式 Patch
+- 路徑 `/products/id`
+- 驗證 token 確認 role: 1
+```json
+{
+  "name": 品名,
+  "price": 價格,
+  "category": 分類,
+  "description": 敘述,
+  "image": 商品圖片,
+  "sell": 上下架狀態,
+  "count": 優惠門檻,
+  "coupon": 回饋點數,
+  "options": 品項
+}
+```
+
+#### 發放回饋點數
+- 請求方式 Patch
+- 路徑 `/users/sendCoupon`
+```json
+{
+  "id": 商品 id
+}
+```
+###  後台訂單管理
+#### 取得所有訂單
+- 請求方式 Get
+- 路徑 `/orders/getorders
+- 驗證 token 確認 role: 1
+
+#### 回壓宅配單號
+- 請求方式 Patch
+- 路徑 `/orders/:id
+- 驗證 token 確認 role: 1
+```json
+{
+  "state": 已出貨
+}
+```
+### 後台營運分析
+#### 取得已完成訂單資料
+- 請求方式 Get
+- 路徑 `/orders/getOrdersQuantity`
+- 驗證 token 確認 role: 1
+
+#### 取得各類別業績
+- 請求方式 Get
+- 路徑 `/orders/getCategorySales`
+- 驗證 token 確認 role: 1
+
+#### 取得商品
+- 請求方式 Get
+- 路徑 `/orders/getProductSales`
+- 驗證 token 確認 role: 1
+
+#### 目標業績
+- 請求方式 Get
+- 路徑 `/admins`
+- 驗證 token 確認 role: 1
