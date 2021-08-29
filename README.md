@@ -345,7 +345,7 @@
 
 #### 取得商品數量
 - 請求方式 Get
-- 路徑 `/products/orderQuantity
+- 路徑 `/products/orderQuantity`
 - 驗證 token 確認 role: 1
 
 
@@ -402,12 +402,12 @@
 ###  後台訂單管理
 #### 取得所有訂單
 - 請求方式 Get
-- 路徑 `/orders/getorders
+- 路徑 `/orders/getorders`
 - 驗證 token 確認 role: 1
 
 #### 回壓宅配單號
 - 請求方式 Patch
-- 路徑 `/orders/:id
+- 路徑 `/orders/:id`
 - 驗證 token 確認 role: 1
 ```json
 {
