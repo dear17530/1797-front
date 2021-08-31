@@ -140,13 +140,13 @@ web: https://dear17530.github.io/1797-front/#/
 #### 註冊
 - 請求方式 Post
 - 路徑 `/users`
-```json
+```json=
 {
   "account": 帳號,
   "password": 密碼,
   "email": 信箱,
   "birthday": 生日,
-  "name"： 姓名,
+  "name": 姓名,
   "userId": 暱稱,
   "gender": 性別
 }
@@ -156,7 +156,7 @@ web: https://dear17530.github.io/1797-front/#/
 - 請求方式 Post
 - 路徑 `/users/login`
 - 獲取 token
-```json
+```json=
 {
   "account": 帳號,
   "password": 密碼
@@ -166,7 +166,7 @@ web: https://dear17530.github.io/1797-front/#/
 #### 登出
 - 請求方式 Delete
 - 路徑 `/users/:id`
-```json
+```json=
 {
   "account": 帳號,
   "password": 密碼
@@ -180,7 +180,7 @@ web: https://dear17530.github.io/1797-front/#/
 #### 新增貼文
 - 請求方式 post
 - 路徑 `/posts`
-```json
+```json=
 {
   "userId": 使用者id,
   "avatar": 頭貼,
@@ -237,7 +237,7 @@ web: https://dear17530.github.io/1797-front/#/
 #### 加入購物車
 - 請求方式 Post
 - 路徑 `/users/cart`
-```json
+```json=
 {
   "product": 商品id,
   "option": 品項,
@@ -256,7 +256,7 @@ web: https://dear17530.github.io/1797-front/#/
 - 請求方式 Patch
 - 路徑 `/users/cart`
 - 需驗證 token
-```json
+```json=
 {
   "account": 帳號,
   "product": 商品id,
@@ -269,7 +269,7 @@ web: https://dear17530.github.io/1797-front/#/
 - 請求方式 Patch
 - 路徑 `/users/cart`
 - 需驗證 token
-```json
+```json=
 {
   "account": 帳號,
   "product": 商品id,
@@ -281,7 +281,7 @@ web: https://dear17530.github.io/1797-front/#/
 #### 送出訂單
 - 請求方式 Post
 - 路徑 `/orders`
-```json
+```json=
 {
   "delivery_method": 宅配,
   "address": 地址,
@@ -299,7 +299,7 @@ web: https://dear17530.github.io/1797-front/#/
 - 請求方式 Patch
 - 驗證
 - 路徑 `/users`
-```json
+```json=
 {
   "_id": 使用者 id,
   "coupon": 原本點數 - 本訂單折抵點數
@@ -314,7 +314,7 @@ web: https://dear17530.github.io/1797-front/#/
 #### 編輯使用者資料
 - 請求方式 Patch
 - 路徑 `/users/:id`
-```json
+```json=
 {
   "name"： 姓名,
   "userId": 暱稱,
@@ -360,7 +360,7 @@ web: https://dear17530.github.io/1797-front/#/
 - 請求方式 Post
 - 路徑 `/products`
 - 驗證 token 確認 role: 1
-```json
+```json=
 {
   "name": 品名,
   "price": 價格,
@@ -378,7 +378,7 @@ web: https://dear17530.github.io/1797-front/#/
 - 請求方式 Patch
 - 路徑 `/products/id`
 - 驗證 token 確認 role: 1
-```json
+```json=
 {
   "name": 品名,
   "price": 價格,
@@ -395,7 +395,7 @@ web: https://dear17530.github.io/1797-front/#/
 #### 發放回饋點數
 - 請求方式 Patch
 - 路徑 `/users/sendCoupon`
-```json
+```json=
 {
   "id": 商品 id
 }
@@ -410,7 +410,7 @@ web: https://dear17530.github.io/1797-front/#/
 - 請求方式 Patch
 - 路徑 `/orders/:id`
 - 驗證 token 確認 role: 1
-```json
+```json=
 {
   "state": 已出貨
 }
