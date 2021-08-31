@@ -226,9 +226,6 @@ web: https://dear17530.github.io/1797-front/#/
 #### 取得商品
 - 請求方式 Get
 - 路徑 `/products`
-:::info
-取出上架中 sell: true 的商品
-:::
 
 #### 商品單獨頁
 - 請求方式 Get
