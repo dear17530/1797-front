@@ -7,13 +7,13 @@ v-container#home.pa-0(fluid)
     v-carousel(hide-delimiters :height='"100%"')
       v-carousel-item
         v-row.justify-center.align-center.mt-lg-10
-          v-col.col-8.col-md-4.col-lg-5.mx-5
+          v-col.col-8.col-md-5.col-lg-5.mx-5
             p.text-h6.text-center.text-sm-h4.text-md-h2.text-lg-h1.mb-0 Group
             P.text-h6.text-center.text-sm-h4.text-md-h3.text-lg-h2.text-lg-right Buying
             p.text-caption.mb-1.text-center.text-lg-subtitle-1.text-lg-right.pr-lg-15 每件商品達門檻都有回饋點數
             p.text-caption.mb-1.text-center.text-lg-subtitle-1.text-lg-right 挑選商品並完成訂單後
             p.text-caption.mb-1.text-center.text-lg-subtitle-1.text-lg-right.pr-lg-15 商品若達優惠門檻,立即發放點數
-          v-col.col-5.col-md-4.col-lg-4.productBN.mx-5
+          v-col.col-5.col-md-5.col-lg-4.mx-5
             router-link(to='/products')
               v-img(src='~@/assets/productBN.png' max-height='450' max-width='450' @mouseover='show(0)' @mouseleave='hide(0)')
         v-row.justify-center.hidden-sm-and-down.mt-0.mb-2.mt-lg-10
@@ -50,9 +50,7 @@ v-container#home.pa-0(fluid)
       v-row.justify-center.align-center.productRow
         v-col.col-12.col-md-4.px-lg-10(v-for='(product, i) in products' :key='product.id')
           router-link(:to="'/product/'+product._id" style='text-decoration: none;')
-            v-carousel.productBg(:height='"100%"' hide-delimiter-background hide-delimiters :show-arrows='false' cycle interval='3000')
-              v-carousel-item(v-for='(item, j) in product.image' :key='j')
-                v-img.product(:src='item')
+            v-img.product(:src='product.image[0]').productBg
           p.text-h5.text-md-h6.black--text.mt-5.mb-1(style='letter-spacing: 1px;') {{ product.name }}
           p.text-h5.text-md-h6.black--text.mb-1(style='letter-spacing: 1px;') ${{ product.price }}
           p.text--primary.my-0
