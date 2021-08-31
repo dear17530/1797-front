@@ -36,7 +36,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "css/admin.4c048199.css"
   },
   {
-    "revision": "52afc4ef4d6a0c03e206",
+    "revision": "a8187a7ef4bb1893ee3d",
     "url": "css/app.7b2310af.css"
   },
   {
@@ -212,8 +212,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/logo.3b806b79.png"
   },
   {
-    "revision": "c777755a2be3ad5a1f69302ac983064d",
-    "url": "img/productBN.c777755a.png"
+    "revision": "ea95c78eb55e7f1ccd68e649dc266a6b",
+    "url": "img/productBN.ea95c78e.png"
   },
   {
     "revision": "097bb97bece945d2075fb1eac886dd5b",
@@ -228,7 +228,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/unionpay.7d585d0b.png"
   },
   {
-    "revision": "88f9099b6dded896c400403fd2986af8",
+    "revision": "7adb4b8ea8163bd846dff6217502b86d",
     "url": "index.html"
   },
   {
@@ -264,8 +264,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "js/admin.9ba36b92.js"
   },
   {
-    "revision": "52afc4ef4d6a0c03e206",
-    "url": "js/app.8d66172d.js"
+    "revision": "a8187a7ef4bb1893ee3d",
+    "url": "js/app.3c27d567.js"
   },
   {
     "revision": "fc7d5db2146a04bfe192",
