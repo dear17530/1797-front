@@ -171,7 +171,7 @@ export default {
       setTargetSales: 0,
       setTargetIndex: 0,
       year: 2021,
-      month: 8,
+      month: 9,
       yearItems: [2021],
       monthItems: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       products: [],
