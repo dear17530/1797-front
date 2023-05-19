@@ -26,7 +26,7 @@ jobs:
           npm install
           npm run build
         env:
-          VUE_APP_API: ${{ secrets.VUE_APP_API }}
+          VUE_APP_API: https://one797back.onrender.com
       # 步驟三：部署
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
